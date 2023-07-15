@@ -16,7 +16,6 @@ export class PageScroll {
         this.isScrolled = false;
         this.delta = 500;
         this.lastKeypressTime = 0;
-        this.menuButtonEvent();
     }
 
     headerScrollEvent() {
@@ -62,13 +61,13 @@ export class PageScroll {
     }
 
     scroll() {
-        let pageScroll = window.pageYOffset;
+        let pageScroll_ = window.pageYOffset;
         const SCROLL_POINT = this.baseHeaderHeight - 20;
 
-        if (pageScroll > SCROLL_POINT && !this.isScrolled) {
+        if (pageScroll_ > SCROLL_POINT && !this.isScrolled) {
             this._constractHeader();
             this.isScrolled = true;
-        } else if (pageScroll <= SCROLL_POINT && this.isScrolled) {
+        } else if (pageScroll_ <= SCROLL_POINT && this.isScrolled) {
             this._removeScrollHeader();
             this.header.classList.remove("active");
             this.isScrolled = false;
@@ -461,7 +460,6 @@ export class AddImagesButtons {
             let photoMenu = document.createElement("div");
             let elementChild = [...element.children[0].children].slice(-1)[0];
             let elementChildSrc = elementChild.src;
-            console.log(elementChildSrc);
             let imageUrl = elementChildSrc.split("img/")[1];
             photoMenu.className = "photo_menu";
             photoMenu.innerHTML = `

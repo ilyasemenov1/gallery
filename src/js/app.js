@@ -50,6 +50,7 @@ class InitPage {
         this.ripple.rippleEvent();
         this.setpageTheme.themeSelectEvent();
         this.pageScroll.headerScrollEvent();
+        this.pageScroll.menuButtonEvent();
         this.nav.articleDocInit();
         this.imgButtons.generatePhotoMenu();
     }
