@@ -238,9 +238,9 @@ export class ArticleNavigation {
         transformedText = transformedText.replaceAll(')', '');
         transformedText = transformedText.replaceAll('"', '');
         transformedText = transformedText.replaceAll(`'`, '');
-        element.id = transformedText;
+        element.id = `y${transformedText}`;
         element.innerHTML = `
-            <a href="#${transformedText}">${text}</a>
+            <a href="#y${transformedText}">${text}</a>
         `
     }
 
