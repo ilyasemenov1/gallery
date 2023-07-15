@@ -1,6 +1,7 @@
 import { SetPageTheme, ButtonRippleEffect, PageScroll, ArticleNavigation } from "./modules/projectMetods.js";
 import { isWebp } from "./modules/isWebpSupport.js";
 
+import Macy from 'macy';
 import LazyLoad from "vanilla-lazyload";
 
 const lazyLoadInstance = new LazyLoad({
@@ -14,8 +15,16 @@ const lazyLoadInstance = new LazyLoad({
       }
 });
 lazyLoadInstance.update();
-
-isWebp();
+var macy = Macy({
+    container: '.photos-container',
+    trueOrder: false,
+    waitForImages: false,
+    margin: 15,
+    columns: 2,
+    breakAt: {
+        500: 1
+    }
+});isWebp();
 
 class InitPage {
     constructor() {
@@ -30,6 +39,7 @@ class InitPage {
         this.setpageTheme.themeSelectEvent();
         this.pageScroll.headerScrollEvent();
         this.nav.articleDocInit();
+        
     }
 }
 

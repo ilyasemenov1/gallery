@@ -1,5 +1,9 @@
 {
   "name": "si1og-gallery",
+  "imports": {
+    "#*": "./src/*",
+    "#modules": "../../../node_modules/*"
+  },
   "version": "0.1.0",
   "description": "",
   "main": "gulpfile.js",
@@ -50,6 +54,7 @@
   },
   "dependencies": {
     "gulp-gm": "^0.0.9",
-    "gulp-htmlmin": "^5.0.1"
+    "gulp-htmlmin": "^5.0.1",
+    "macy": "^2.5.1"
   }
 }
