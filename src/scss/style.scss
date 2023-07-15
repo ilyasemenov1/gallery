@@ -280,10 +280,11 @@ section {
         }
     }
 }
-.footer_photos{
+.footer_link{
     position: relative;
     display: flex;
-    gap: 4px;
+    align-items: center;
+    gap: 6px;
     padding: 5px 8px;
     border-radius: 15px;
     text-decoration: none;
@@ -294,9 +295,9 @@ section {
     }
     svg {
         position: relative;
-        top: 2px;
-        width: 17px;
-        height: 17px;
+        top: 0px;
+        width: 19px;
+        height: 19px;
         fill: var(--text-color-1) !important;
     }
 }
