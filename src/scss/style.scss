@@ -432,7 +432,7 @@ section {
 .photos-container {
     position: relative;    
 }
-.photos-container_photo-button {
+.photo {
     margin: 10px;
     padding: 0;
     border: none;
@@ -446,5 +446,42 @@ section {
         width: 100%;
         display: block;
         height: auto;
+    }
+    &:hover .photo_menu {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.photo_menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    background: var(--bg-color-2);
+    box-sizing: border-box;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: .2s ease;
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--text-color-1);
+        svg {
+            left: 5px;
+            width: 20px;
+            height: 20px;
+            stroke: var(--bg-color-1);
+        }
     }
 }

@@ -450,3 +450,35 @@ export class SetPageTheme {
         setUpMode(mode, userTheme);
     }
 }
+
+export class AddImagesButtons {
+    constructor() {
+        this.imageContainers = document.querySelectorAll(".photo")
+    }
+
+    generatePhotoMenu() {
+        this.imageContainers.forEach(element => {
+            let photoMenu = document.createElement("div");
+            let elementChild = [...element.children[0].children].slice(-1)[0];
+            let elementChildSrc = elementChild.src;
+            console.log(elementChildSrc);
+            let imageUrl = elementChildSrc.split("img/")[1];
+            photoMenu.className = "photo_menu";
+            photoMenu.innerHTML = `
+                <a href="downloads/${imageUrl}" class="photo_download-button" download>
+                    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Interface / Download">
+                    <path id="Vector" d="M6 21H18M12 3V17M12 17L17 12M12 17L7 12" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                    </svg>
+                </a> 
+                <a href="downloads/${imageUrl}" target="_blank" class="photo_open-in-new-tab-button">
+                    <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12V6C5 5.44772 5.44772 5 6 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H12M8.11111 12H12M12 12V15.8889M12 12L5 19" stroke-linecap="round" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            `
+            element.appendChild(photoMenu);
+        });
+    }
+}

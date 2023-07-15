@@ -1,4 +1,4 @@
-import { SetPageTheme, ButtonRippleEffect, PageScroll, ArticleNavigation, GenerateImages } from "./modules/projectMetods.js";
+import { SetPageTheme, ButtonRippleEffect, PageScroll, ArticleNavigation, AddImagesButtons } from "./modules/projectMetods.js";
 import { isWebp } from "./modules/isWebpSupport.js";
 
 import Macy from 'macy';
@@ -27,12 +27,12 @@ photoContainers.forEach(element => {
             500: 1
         }
     });
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            macy.recalculate(true);
+        }, 50);
+    });
 })
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        macy.recalculate(true);
-    }, 50);
-});
 
 
 isWebp();
@@ -43,6 +43,7 @@ class InitPage {
         this.setpageTheme = new SetPageTheme();
         this.pageScroll = new PageScroll();
         this.nav = new ArticleNavigation();
+        this.imgButtons = new AddImagesButtons();
     }
 
     init() {
@@ -50,6 +51,7 @@ class InitPage {
         this.setpageTheme.themeSelectEvent();
         this.pageScroll.headerScrollEvent();
         this.nav.articleDocInit();
+        this.imgButtons.generatePhotoMenu();
     }
 }
 
