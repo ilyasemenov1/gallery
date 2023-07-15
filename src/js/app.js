@@ -1,4 +1,4 @@
-import { SetPageTheme, ButtonRippleEffect, PageScroll, ArticleNavigation } from "./modules/projectMetods.js";
+import { SetPageTheme, ButtonRippleEffect, PageScroll, ArticleNavigation, GenerateImages } from "./modules/projectMetods.js";
 import { isWebp } from "./modules/isWebpSupport.js";
 
 import Macy from 'macy';
@@ -15,16 +15,27 @@ const lazyLoadInstance = new LazyLoad({
       }
 });
 lazyLoadInstance.update();
-var macy = Macy({
-    container: '.photos-container',
-    trueOrder: false,
-    waitForImages: false,
-    margin: 15,
-    columns: 2,
-    breakAt: {
-        500: 1
-    }
-});isWebp();
+let photoContainers = document.querySelectorAll(".photos-container");
+photoContainers.forEach(element => {
+    var macy = Macy({
+        container: element,
+        trueOrder: false,
+        waitForImages: false,
+        margin: 15,
+        columns: 2,
+        breakAt: {
+            500: 1
+        }
+    });
+})
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        macy.recalculate(true);
+    }, 50);
+});
+
+
+isWebp();
 
 class InitPage {
     constructor() {
@@ -39,7 +50,6 @@ class InitPage {
         this.setpageTheme.themeSelectEvent();
         this.pageScroll.headerScrollEvent();
         this.nav.articleDocInit();
-        
     }
 }
 
