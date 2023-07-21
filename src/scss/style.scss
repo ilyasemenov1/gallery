@@ -6,9 +6,10 @@ body, div, span {
     transition: background .2s ease;
 }
 body {
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: start;
     align-items: center;
     min-height: 100vh;
     margin: 0;
@@ -63,15 +64,23 @@ main,
     padding: 20px 30px;
     box-sizing: border-box;
     @media (max-width: 380px) {
-        padding: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
+}
+.footer {
+    position: absolute;
+    bottom: 0;
 }
 .header {
     top: 0;
     z-index: 10;
 }
 main {
-    padding: 245px 30px 10px 30px;
+    padding: 75px 30px 75px 30px;
+    @media (max-width: 380px) {
+        padding-bottom: 115px;
+    }
 }
 .header_conteiner{
     display: flex;
@@ -316,6 +325,7 @@ section {
     }
 }
 .header_theme-switch-conteiner {
+    position: relative;
     &>button {
         display: flex;
         justify-self: center;
@@ -434,6 +444,12 @@ section {
         fill: var(--text-color-1);
     }
 }
+.year {
+    display: none;
+    &.loaded {
+        display: block;
+    }
+}
 .photos-container {
     position: relative;    
 }
@@ -492,5 +508,59 @@ section {
             height: 20px;
             stroke: var(--bg-color-1);
         }
+    }
+}
+.page-preload {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    &.page-loaded {
+        display: none;
+    }
+}
+.page-preload_label{
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    background: var(--bg-color-4);
+}
+.page-preload-conteiner{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-auto-rows: 10px;
+    padding: 0 0 20px 0;
+}
+.page-preload_card {
+    position: relative;
+    display: block;
+    margin: 7px;
+    border-radius: 15px;
+    background: var(--bg-color-4);
+    box-sizing: border-box;
+    overflow: hidden;
+    &.horisontal {
+        grid-row-end: span 20;
+        height: 185px;
+    }
+    &.vertical {
+        grid-row-end: span 50;
+        height: 485px;
+    }
+}
+.page-preload_label,
+.page-preload_card {
+    position: relative;
+    overflow: hidden;
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 300%;
+        height: 200%;
+        background: linear-gradient(to right, var(--bg-color-4), var(--bg-color-2), var(--bg-color-4));
+        background-size: 3000% 3000%;
+        animation: loading 3s ease infinite;
     }
 }

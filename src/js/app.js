@@ -15,25 +15,27 @@ const lazyLoadInstance = new LazyLoad({
       }
 });
 lazyLoadInstance.update();
-let photoContainers = document.querySelectorAll(".photos-container");
-photoContainers.forEach(element => {
-    var macy = Macy({
-        container: element,
-        trueOrder: false,
-        waitForImages: false,
-        margin: 15,
-        columns: 2,
-        breakAt: {
-            500: 1
-        }
-    });
-    window.addEventListener("load", () => {
+
+window.addEventListener("load", () => {
+    let photoContainers = document.querySelectorAll(".photos-container");
+    let loadingContainer = document.querySelector(".page-preload");
+    photoContainers.forEach(element => {
+        element.parentElement.classList.add("loaded");
         setTimeout(() => {
-            macy.recalculate(true);
+            let macy = Macy({
+                container: element,
+                trueOrder: false,
+                waitForImages: false,
+                margin: 15,
+                columns: 2,
+                breakAt: {
+                    500: 1
+                }
+            });
         }, 50);
     });
-})
-
+    loadingContainer.classList.add("page-loaded");
+});
 
 isWebp();
 
