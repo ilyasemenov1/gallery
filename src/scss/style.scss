@@ -515,6 +515,7 @@ section {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 12px 0;
     &.page-loaded {
         display: none;
     }
@@ -529,7 +530,6 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     grid-auto-rows: 10px;
-    padding: 0 0 20px 0;
 }
 .page-preload_card {
     position: relative;
@@ -559,8 +559,8 @@ section {
         content: "";
         width: 300%;
         height: 200%;
-        background: linear-gradient(to right, var(--bg-color-4), var(--bg-color-2), var(--bg-color-4));
+        background: linear-gradient(to right, var(--bg-color-4), var(--bg-color-20), var(--bg-color-4));
         background-size: 3000% 3000%;
-        animation: loading 3s ease infinite;
+        animation: loading 2.5s ease infinite;
     }
 }
